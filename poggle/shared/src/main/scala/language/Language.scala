@@ -7,4 +7,6 @@ trait Language {
   val welcomeMessage: String
   val distribution: Seq[ItemFreq[String]]
   val timeIsUp: String
+  val shuffleButton: String
+  val startTime: String
 }

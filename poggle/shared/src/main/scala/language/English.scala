@@ -36,4 +36,6 @@ object English extends Language {
   )
 
   override val timeIsUp: String = "TIME IS UP!!!"
+  override val shuffleButton: String = "Shake it!"
+  override val startTime: String = "Start Time!"
 }

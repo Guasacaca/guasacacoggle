@@ -38,4 +38,6 @@ object Spanish extends Language {
     ItemFreq("Z",	0.52)
   )
   override val timeIsUp: String = "¡¡SE ACABO TU TIEMPO!!"
+  override val shuffleButton: String = "Bate la caja"
+  override val startTime: String = "Comienza el tiempo"
 }
