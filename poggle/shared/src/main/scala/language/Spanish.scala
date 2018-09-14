@@ -37,5 +37,5 @@ object Spanish extends Language {
     ItemFreq("Y",	0.90),
     ItemFreq("Z",	0.52)
   )
-
+  override val timeIsUp: String = "¡¡SE ACABO TU TIEMPO!!"
 }

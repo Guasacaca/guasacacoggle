@@ -34,4 +34,6 @@ object English extends Language {
     ItemFreq("Y",1.974),
     ItemFreq("Z",0.074)
   )
+
+  override val timeIsUp: String = "TIME IS UP!!!"
 }

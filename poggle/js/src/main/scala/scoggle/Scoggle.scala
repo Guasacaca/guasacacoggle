@@ -7,13 +7,14 @@ import org.scalajs.dom.raw.{Element, NodeList, Text}
 import poggle.Preparation.Game
 
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
-import scala.scalajs.js.timers
+import scala.scalajs.js.timers.setTimeout
 
 @JSExportTopLevel("Scoggle")
 object Scoggle {
 
+  val language = Spanish
   val dim = 5
-  val play = Game(English, dim)
+  val play = Game(language, dim)
   val container: Element = appendPar(document.body)
 
   def appendPar(body: dom.Node): Element = {
@@ -27,7 +28,6 @@ object Scoggle {
     letters.zipWithIndex.map { case (letra,idx) =>
       val spanNode = createSpanNode(letra)
       container.appendChild(spanNode)
-
       if(idx != 0 && idx % dim  == dim-1) {
         val enter = document.createElement("br")
         container.appendChild(enter)
@@ -39,7 +39,6 @@ object Scoggle {
   def createSpanNode(letter: String): dom.Node = {
     val spanNode = document.createElement("span")
     val textNode = document.createTextNode(letter)
-
     spanNode.appendChild(textNode)
     spanNode.classList.add("letter")
     spanNode
@@ -65,7 +64,13 @@ object Scoggle {
 
   @JSExportTopLevel("startTime")
   def startTime(): Unit = {
-    ???
+    setTimeout(1000) { // note the absence of () =>
+      val time = document.createElement("p")
+      time.classList.add("time")
+      val src = document.createTextNode(language.timeIsUp)
+      time.appendChild(src)
+      container.appendChild(time)
+    }
   }
 
   @JSExport
