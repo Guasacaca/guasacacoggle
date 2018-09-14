@@ -19,6 +19,7 @@ object Scoggle {
     val container = document.createElement("container")
     body.appendChild(container)
     container
+
   }
 
   def addBoxesAndLetters(gridContainer: dom.Node, letras: Seq[String], dim: Int): Unit = {

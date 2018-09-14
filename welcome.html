@@ -6,19 +6,45 @@
     <style>
         body {
             padding: 100px;
-        }
-        . grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 10px:
-            justify-content: center;
+            display: flex;
         }
         .letter {
+            border:solid 4px #c77620;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            padding: 8px;
+            margin: 10px;
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+        }
+        .button {
+            padding: 15px 10px;
+            border: 1px solid #199a1e;
+            width: 200px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            order: 1;
+            margin-left: 40px;
         }
     </style>
 </head>
 <body>
+<div class="buttons">
+    <button class="button" id="shuffle" type="button" onclick="addClickedMessage()">
+        Shuffle!
+    </button>
+    <button class="button" id="time" type="button" onclick="startTime()">
+        Start Time!
+    </button>
+</div>
 <!-- Include Scala.js compiled code -->
-<script type="text/javascript" src="./target/scala-2.12/poogle-fastopt.js"></script>
+<script type="text/javascript" src="./poggle/js/target/scala-2.12/poggle-fastopt.js"></script>
 </body>
 </html>
