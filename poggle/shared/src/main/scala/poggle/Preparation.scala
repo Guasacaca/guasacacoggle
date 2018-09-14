@@ -20,8 +20,9 @@ object Preparation {
 
     val dice: Dice = {
       val (sumAccumTotal, distSumAccum) = distributionAcc(getLettersDistribution(language))
-      (0 until boardSurface).foldLeft(Seq.empty[Die[String]]) { (acc, idx) =>
-        val randomLetters: Seq[String] = (0 until diceSides).map(_ => distributedRandom[String](new Random, sumAccumTotal, distSumAccum))
+      (0 until boardSurface).foldLeft(Seq.empty[Die[String]]) { (acc, _) =>
+        val randomLetters: Seq[String] =
+          (0 until diceSides).map(_ => distributedRandom[String](new Random, sumAccumTotal, distSumAccum))
         acc :+ Die(facesSymbols = randomLetters, sides = diceSides)
       }
     }

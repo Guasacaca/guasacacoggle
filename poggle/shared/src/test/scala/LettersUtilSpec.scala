@@ -29,13 +29,13 @@ class LettersUtilSpec extends  FlatSpec with Matchers {
 
     val modelingIt = l.map(f => (f.frequency*100).toInt ).zipWithIndex
 
-    l(findLimit(50, modelingIt)).item should be ('A)
+    l(findLimitIdx(50, modelingIt)).item should be ('A)
 
-    l(findLimit(4439, modelingIt)).item should be ('B)
+    l(findLimitIdx(4439, modelingIt)).item should be ('B)
 
-    l(findLimit(4440, modelingIt)).item should be ('B)
+    l(findLimitIdx(4440, modelingIt)).item should be ('B)
 
-    l(findLimit(4441, modelingIt)).item should be ('C)
+    l(findLimitIdx(4441, modelingIt)).item should be ('C)
 
   }
 }

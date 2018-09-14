@@ -5,8 +5,9 @@ val sharedSettings = Seq(
   version := "0.1",
   scalaVersion := "2.12.6",
   libraryDependencies ++= Seq(
-    "org.scalatest" %%% "scalatest" % "3.0.5" % "test",
-  )
+    "org.scalatest" %%% "scalatest" % "3.0.5" % "test"
+  ),
+  addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
 )
 
 lazy val poggle =
@@ -16,9 +17,9 @@ lazy val poggle =
     .settings(sharedSettings)
     .jsSettings(
       Seq(
-        mainClass := Some("scoggle.Scoggle"),
-        scalaJSUseMainModuleInitializer := true,
-        libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.2"
+        mainClass := Some("scoggle.ScoggleBinding"),
+        libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.2",
+        libraryDependencies += "com.thoughtworks.binding" %%% "dom" % "latest.release"
       )
     ) // defined in sbt-scalajs-crossproject
     .jvmSettings(/* ... */)
