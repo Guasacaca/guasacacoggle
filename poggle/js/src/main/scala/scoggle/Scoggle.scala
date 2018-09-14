@@ -1,9 +1,12 @@
 package scoggle
 
+import java.net.URL
+
 import org.scalajs.dom
 import dom.document
+import javax.sound.sampled.{AudioInputStream, AudioSystem}
 import language.{English, Spanish}
-import org.scalajs.dom.raw.{Element, NodeList, Text}
+import org.scalajs.dom.raw.Element
 import poggle.Preparation.Game
 
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
@@ -13,7 +16,7 @@ import scala.scalajs.js.timers.setTimeout
 object Scoggle {
 
   val language = Spanish
-  val dim = 5
+  val dim = 8
   val play = Game(language, dim)
   val container: Element = appendPar(document.body)
 
@@ -21,7 +24,6 @@ object Scoggle {
     val container = document.createElement("container")
     body.appendChild(container)
     container
-
   }
 
   def addBoxesAndLetters(container: dom.Node, letters: Seq[String], dim: Int): Seq[dom.Node] = {
@@ -59,7 +61,6 @@ object Scoggle {
   def addClickedMessage(): Unit = {
     val board = play.shakeTheBox
     replaceLetters(container, board.map(_.toString))
-    //addBoxesAndLetters(container, board.map(_.toString), dim)
   }
 
   @JSExportTopLevel("startTime")
@@ -73,12 +74,21 @@ object Scoggle {
     }
   }
 
+  def playMusic(path: String): Unit = {
+    val url = new URL(path)
+    val audioIn: AudioInputStream = AudioSystem.getAudioInputStream(url)
+    val clip = AudioSystem.getClip
+    clip.open(audioIn)
+    clip.start
+  }
+
   @JSExport
   def main(args: Array[String]): Unit = {
 
     val board = play.shakeTheBox
 
-    val nodes = addBoxesAndLetters(container, board.map(_.toString), dim)
+   play.dice.foreach(println(_))
 
+    val nodes = addBoxesAndLetters(container, board.map(_.toString), dim)
   }
 }
