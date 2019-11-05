@@ -26,7 +26,7 @@ object Spanish extends Language {
     ItemFreq("Ñ",	0.31),
     ItemFreq("O",	8.68),
     ItemFreq("P",	2.51),
-    ItemFreq("Qu",	0.88),
+    ItemFreq("Q",	0.88), //TODO deal with Qu
     ItemFreq("R",	6.87),
     ItemFreq("S",	7.98),
     ItemFreq("T",	4.63),

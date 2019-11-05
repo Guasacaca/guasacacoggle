@@ -17,7 +17,7 @@ lazy val poggle =
     .settings(sharedSettings)
     .jsSettings(
       Seq(
-        mainClass := Some("scoggle.ScoggleBinding"),
+        mainClass := Some("scoggle.Scoggle"),
         libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.2",
         libraryDependencies += "com.thoughtworks.binding" %%% "dom" % "latest.release"
       )

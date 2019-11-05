@@ -1,7 +1,7 @@
 package poggle
 
-import language.{Language, Spanish}
-import poggle.LettersUtil.{getLettersDistribution, distributedRandom, distributionAcc}
+import language.{English, Language, Spanish}
+import poggle.LettersUtil.{distributedRandom, distributionAcc, getLettersDistribution}
 
 import scala.util.Random
 
@@ -14,7 +14,16 @@ object Preparation {
     def throwDie(): T = facesSymbols(Random.nextInt(sides))
   }
 
+  def getLanguageByName(name: String): Either[Exception, Language] =
+    name.toLowerCase match {
+      case "espanol" => Right(Spanish)
+      case "english" => Right(English)
+      case lan => Left(new IllegalArgumentException(s"Language $lan is not supported"))
+    }
+
+
   case class Game(language: Language, dim: Int) {
+    assert(dim>1)
     val diceSides = 6
     val boardSurface: Int = dim*dim
 
@@ -27,7 +36,9 @@ object Preparation {
       }
     }
 
-    def shakeTheBox: Board = dice.map(_.throwDie())
+    def shakeTheBox[String]: Board = {
+      dice.map(_.throwDie())
+    }
 
     def dibujar(dados: Board): String = {
       dados.zipWithIndex.foreach { case (valorDado, idx) =>

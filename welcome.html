@@ -40,8 +40,36 @@
     </style>
 </head>
 <body>
+<div class="game">
+    Language:
+    <select id="selectedLan">
+        <option value="Espanol">Español</option>
+        <option value="English">English</option>
+    </select>
+    <br>
+    Dimensions:
+    <select id="selectedDim">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+    </select>
+    <br>
+    <button class="resetButton" id="reset" type="button" onclick="resetGame()">
+        Restart Game
+    </button>
+    <br>
+    <br>
+    <input id="wordToCheck" type="text">
+    <button class="checkWord" id="checkWord" type="button" onclick="checkWord()">
+        Check
+    </button>
+</div>
 <div class="buttons">
-    <button class="button" id="shuffle" type="button" onclick="addClickedMessage()">
+    <button class="button" id="shuffle" type="button" onclick="shuffle()">
         Shuffle!
     </button>
     <button class="button" id="time" type="button" onclick="startTime()">
